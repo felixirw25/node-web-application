@@ -12,7 +12,7 @@ app.get('/', (req,res) => {
     
 // })
 
-app.get('*', function(req, res, next){ 
+app.get('/mca', function(req, res, next){ 
     if(req.headers.host == 'mca.herokufi.online')  //if it's a sub-domain
       req.url = '/mca' + '/mca';  
       res.send('Hello World MCA - Node.js');

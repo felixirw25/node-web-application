@@ -9,14 +9,19 @@ app.use(express.json());
     
     // })
     
-app.get('*', function(req, res, next){ 
-    if(req.headers.host == 'mca.herokufi.online')  //if it's a sub-domain
-    req.url = '/mysubdomain' + req.url;  
-    next(); 
+app.get('/', function(req, res, next){ 
+    if(req.headers.host == 'mca.herokufi.online'){
+        req.url = '/'; 
+        res.send('Hello World MCA - Node.js');
+        next(); 
+    }
+    else{
+        res.send('Hello World - Node.js');
+    }
 });
 
-app.get('/mysubdomain/mca', function(){ 
-    res.send('Hello World MCA - Node.js'); 
+app.get('/', function(){ 
+    res.send('Hello World MCA - Node.js');
 });
     
 app.get('/welcome', (req,res) => {
